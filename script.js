@@ -1,10 +1,11 @@
 // Replace direct API call with Vercel function endpoint
-fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(cityName)}`)
+/* fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(cityName)}`)
     .then(response => response.json())
     .then(data => {
         // Process the data
     })
     .catch(error => console.error('Error:', error));
+    */
 
 
 
@@ -79,6 +80,10 @@ document.getElementById('city-selector').addEventListener('change', function() {
 
 // Updates City Information and handles UI transitions
 function updateCityInfo(cityName) {
+    if(!cityName){
+        return;
+    }
+
     // Hide current text immediately upon new city selection
     document.getElementById('app').style.opacity = '0';
 
