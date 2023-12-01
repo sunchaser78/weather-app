@@ -1,6 +1,6 @@
 // Vercel serverless function to fetch weather data
 module.exports = async (req, res) => {
-    const cityName = req.query.cityName;
+    const cityName = req.query.city;
     const apiKey = process.env.OPENWEATHER_API_KEY; // Your API key environment variable
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName)}&appid=${apiKey}&units=metric`;
 
