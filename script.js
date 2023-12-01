@@ -119,7 +119,7 @@ function setDefaultCity() {
 
 
 function fetchWeather(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(city)}`)
+    fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(data => {
             updateUI(data); // Assuming updateUI function processes and displays the weather data
