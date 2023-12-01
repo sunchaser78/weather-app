@@ -1,0 +1,147 @@
+body, #app {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+body {
+    transition: opacity 1s ease-in-out, background-image 1s ease-in-out;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+
+#app {
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+#city-selector {
+    border-radius: 20px;
+    border-color: white;
+    border: 1px solid #ccc;
+    min-height: 50px;
+    font-size: 33px; /* Updated font size with unit */
+    font-weight: 500;
+    color: #fff;
+    background-color: rgba(50, 50, 50, 0.5); /* Semi-transparent black background */
+    /* font-family: 'Roboto', sans-serif; */
+    padding-left: 10px; /* Added left padding */
+    margin: 20px;
+    padding: 10px;
+}
+
+#city-selector:focus {
+    border-color: lightgrey;
+}
+
+.weather-info {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.info-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 60px;
+    padding: 10px;
+    background-color: rgba(50, 50, 50, 0.5); /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px #333;
+}
+
+.weather-info i {
+    font-size: 55px; /* Increased font size for larger icons */
+    margin-bottom: 10px; /* Space between icon and text */
+    color: white; /* Adjust as needed */
+}
+
+#spinner {
+    position: fixed; /* Fixed position */
+    top: 50%; /* Push down by half of viewport height */
+    left: 50%; /* Push right by half of viewport width */
+    transform: translate(-50%, -50%); /* Adjust position to center */
+    /* Add more styling for your spinner below */
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+h1, h2, p {
+    color: white;
+    /* font-family: 'Roboto', sans-serif; */
+    text-shadow: 2px 2px 4px #333; /* Drop shadow */
+}
+
+h1 {
+   
+    font-size: 55px;
+    font-weight: 700px;
+}
+
+h2 {
+   
+    font-size: 33px;
+    font-weight: 500px;
+}
+
+p {
+    color: white;
+    margin: 0; /* Remove default margins */
+    font-size: 28px; /* Adjust as needed */
+}
+
+
+/* Existing CSS code... */
+
+.forecast-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.forecast-day {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(50, 50, 50, 0.5); /* Semi-transparent white */
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.weather-icon {
+    width: 50px; /* Adjust as needed */
+    height: auto;
+}
+
+/* Existing CSS code... */
+
+
+
