@@ -1,11 +1,10 @@
 // Replace direct API call with Vercel function endpoint
-/* fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(cityName)}`)
+fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(cityName)}`)
     .then(response => response.json())
     .then(data => {
         // Process the data
     })
     .catch(error => console.error('Error:', error));
-    */
 
 
 
@@ -80,10 +79,6 @@ document.getElementById('city-selector').addEventListener('change', function() {
 
 // Updates City Information and handles UI transitions
 function updateCityInfo(cityName) {
-    if(!cityName){
-        return;
-    }
-
     // Hide current text immediately upon new city selection
     document.getElementById('app').style.opacity = '0';
 
@@ -119,7 +114,7 @@ function setDefaultCity() {
 
 
 function fetchWeather(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(city)}`)
+    fetch(`https://your-vercel-project-name.vercel.app/api/getWeather?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(data => {
             updateUI(data); // Assuming updateUI function processes and displays the weather data
@@ -197,30 +192,20 @@ function updateLocalTime() {
 
 
 
-
-
-
-
-
-
-// Fetch city image and handle spinner visibility
 function fetchCityImage(cityName) {
-    const accessKey = 'QYD_NuTsNc6JvRuPzRg4Lh71qrYO-4eZRTeulSCpDk8';
-    const url = `https://api.unsplash.com/search/photos?query=${cityName}&client_id=${accessKey}`;
-    return fetch(url)
+    fetch(`https://weather-app-five-dun.vercel.app/api/getImage?city=${encodeURIComponent(cityName)}`)
         .then(response => response.json())
-        .then(data => {
-            if (data.results.length > 0) {
-                return data.results[0].urls.regular; // Return image URL
-            } else {
-                console.log(`No images found for ${cityName}`);
-                return null;
+        .then(imageUrl => {
+            if (imageUrl) {
+                document.body.style.backgroundImage = `url('${imageUrl}')`;
+                document.body.style.backgroundPosition = 'center';
+                document.body.style.backgroundRepeat = 'no-repeat';
+                document.body.style.backgroundSize = 'cover';
             }
-        });
+        })
+        .catch(error => console.error('Error fetching image:', error));
 }
 
-
-// Existing JavaScript code...
 
 // Fetch 5-day forecast
 function fetchForecast(cityName) {
