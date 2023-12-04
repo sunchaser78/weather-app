@@ -1,7 +1,7 @@
 // Vercel serverless function to fetch city images from Unsplash
 module.exports = async (req, res) => {
     const cityName = req.query.city;
-    const accessKey = process.env.UNSPLASH_ACCESS_KEY;
+    const accessKey = process.env.UNSPLASH_API_KEY;
     const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(cityName)}&client_id=${accessKey}`;
 
     try {
