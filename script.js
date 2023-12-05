@@ -73,6 +73,7 @@ document.getElementById('city-selector').addEventListener('change', function() {
     const selectedCity = this.value;
     fetchWeather(selectedCity);
     fetchForecast(selectedCity);
+    fetchCityImage(selectedCity);
 });
 
 
@@ -114,13 +115,14 @@ function setDefaultCity() {
 
 
 function fetchWeather(city) {
-    fetch(`https://your-vercel-project-name.vercel.app/api/getWeather?city=${encodeURIComponent(city)}`)
+    fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(data => {
-            updateUI(data); // Assuming updateUI function processes and displays the weather data
+            updateUI(data);
         })
         .catch(error => console.error('Error:', error));
 }
+
 
 
 
@@ -192,8 +194,8 @@ function updateLocalTime() {
 
 
 
-function fetchCityImage(cityName) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/getImage?city=${encodeURIComponent(cityName)}`)
+function fetchCityImage(city) {
+    fetch(`https://weather-app-five-dun.vercel.app/api/getImage?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(imageUrl => {
             if (imageUrl) {
@@ -208,14 +210,15 @@ function fetchCityImage(cityName) {
 
 
 // Fetch 5-day forecast
-function fetchForecast(cityName) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/getForecast?cityName=${encodeURIComponent(cityName)}`)
+function fetchForecast(city) {
+    fetch(`https://weather-app-five-dun.vercel.app/api/getForecast?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(data => {
-            updateForecastUI(data); 
+            updateForecastUI(data);
         })
         .catch(error => console.error('Error fetching forecast:', error));
 }
+
 
 
 
