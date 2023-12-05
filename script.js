@@ -70,11 +70,12 @@ function sortCities() {
 
 // City Selector Change Event Listener
 document.getElementById('city-selector').addEventListener('change', function() {
-    const selectedCity = this.value;
-    fetchWeather(selectedCity);
-    fetchForecast(selectedCity);
-    fetchCityImage(selectedCity);
+    const selectedCity = this.value; // Get the selected city
+    fetchWeather(selectedCity); // Fetch weather for the selected city
+    fetchForecast(selectedCity); // Fetch forecast for the selected city
+    fetchCityImage(selectedCity); // Fetch city image for the selected city
 });
+
 
 
 
