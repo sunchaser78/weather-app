@@ -1,5 +1,5 @@
 // Replace direct API call with Vercel function endpoint
-fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${hs-projects-52919449(cityName)}`)
+fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(cityName)}`)
     .then(response => response.json())
     .then(data => {
         // Process the data
@@ -115,10 +115,10 @@ function setDefaultCity() {
 
 
 function fetchWeather(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${hs-projects-52919449(city)}`)
+    fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(data => {
-            updateUI(data);
+            updateUI(data); 
         })
         .catch(error => console.error('Error:', error));
 }
@@ -192,10 +192,8 @@ function updateLocalTime() {
 }
 
 
-
-
 function fetchCityImage(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/getImage?city=${hs-projects-52919449(city)}`)
+    fetch(`https://weather-app-five-dun.vercel.app/api/getImage?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(imageUrl => {
             if (imageUrl) {
@@ -208,10 +206,9 @@ function fetchCityImage(city) {
         .catch(error => console.error('Error fetching image:', error));
 }
 
-
 // Fetch 5-day forecast
 function fetchForecast(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/getForecast?city=${hs-projects-52919449(city)}`)
+    fetch(`https://weather-app-five-dun.vercel.app/api/getForecast?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(data => {
             updateForecastUI(data);
