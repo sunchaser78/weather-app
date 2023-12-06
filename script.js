@@ -1,5 +1,5 @@
 // Replace direct API call with Vercel function endpoint
-fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(cityName)}`)
+fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(cityName)}`)
     .then(response => response.json())
     .then(data => {
         // Process the data
@@ -116,7 +116,7 @@ function setDefaultCity() {
 
 
 function fetchWeather(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/getWeather?city=${encodeURIComponent(city)}`)
+    fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(data => {
             updateUI(data); 
@@ -194,7 +194,7 @@ function updateLocalTime() {
 
 
 function fetchCityImage(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/getImage?city=${encodeURIComponent(city)}`)
+    fetch(`https://weather-app-five-dun.vercel.app/api/image?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(imageUrl => {
             if (imageUrl) {
