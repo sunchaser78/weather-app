@@ -80,7 +80,7 @@ document.getElementById('city-selector').addEventListener('change', function() {
 
 
 // Updates City Information and handles UI transitions
-function updateCityInfo(cityName) {
+function updateCityInfo(city) {
     // Hide current text immediately upon new city selection
     document.getElementById('app').style.opacity = '0';
 
@@ -88,10 +88,10 @@ function updateCityInfo(cityName) {
     document.getElementById('spinner').style.display = 'block';
 
     // Fetch both weather and image data
-    Promise.all([fetchWeather(cityName), fetchCityImage(cityName)])
+    Promise.all([fetchWeather(city), fetchCityImage(city)])
         .then(([weatherData, imageUrl]) => {
             updateUI(weatherData, imageUrl); // Update UI only after both data are fetched
-            fetchForecast(cityName); // Fetch forecast data
+            fetchForecast(city); // Fetch forecast data
         })
         .catch(error => {
             console.error('Error updating city info:', error);
