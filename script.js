@@ -1,5 +1,5 @@
 // Replace direct API call with Vercel function endpoint
-fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(cityName)}`)
+fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(city)}`)
     .then(response => response.json())
     .then(data => {
         // Process the data
