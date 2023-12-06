@@ -1,12 +1,18 @@
 // Replace direct API call with Vercel function endpoint
-fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(city)}`)
+fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(cityName)}`)
     .then(response => response.json())
     .then(data => {
         // Process the data
     })
     .catch(error => console.error('Error:', error));
 
-
+    if (typeof variable !== 'undefined') {
+        // the variable is defined
+        console.info('CityName =', cityName);
+     } else {
+         // the variable is undefined
+         console.info('CityName is EMPTY');
+    }
 
 let currentCityTimezoneOffset = 0; // Global variable to store the timezone offset
 const cities = [
@@ -80,7 +86,7 @@ document.getElementById('city-selector').addEventListener('change', function() {
 
 
 // Updates City Information and handles UI transitions
-function updateCityInfo(city) {
+function updateCityInfo(cityName) {
     // Hide current text immediately upon new city selection
     document.getElementById('app').style.opacity = '0';
 
@@ -88,10 +94,10 @@ function updateCityInfo(city) {
     document.getElementById('spinner').style.display = 'block';
 
     // Fetch both weather and image data
-    Promise.all([fetchWeather(city), fetchCityImage(city)])
+    Promise.all([fetchWeather(cityName), fetchCityImage(cityName)])
         .then(([weatherData, imageUrl]) => {
             updateUI(weatherData, imageUrl); // Update UI only after both data are fetched
-            fetchForecast(city); // Fetch forecast data
+            fetchForecast(cityName); // Fetch forecast data
         })
         .catch(error => {
             console.error('Error updating city info:', error);
