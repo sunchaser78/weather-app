@@ -1,3 +1,14 @@
+/* Base styles that apply to all screen sizes */
+
+@media screen and (max-width: 768px) {
+    /* Styles for screens smaller than 768px (tablets and smartphones) */
+}
+
+@media screen and (max-width: 480px) {
+    /* Styles for screens smaller than 480px (mostly smartphones) */
+}
+
+
 body, #app {
     transition: opacity 1s ease-in-out;
     opacity: 0;
@@ -33,12 +44,11 @@ body {
     border-color: white;
     border: 1px solid #ccc;
     min-height: 50px;
-    font-size: 33px; /* Updated font size with unit */
+    font-size: 33px;
     font-weight: 500;
     color: #fff;
-    background-color: rgba(50, 50, 50, 0.5); /* Semi-transparent black background */
-    /* font-family: 'Roboto', sans-serif; */
-    padding-left: 10px; /* Added left padding */
+    background-color: rgba(50, 50, 50, 0.5); 
+    padding-left: 10px; 
     margin: 20px;
     padding: 10px;
 }
@@ -49,9 +59,22 @@ body {
 
 .weather-info {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     width: 100%;
-    margin-top: 20px; /* Adjust as needed */
+    margin-top: 20px; 
+}
+
+@media screen and (max-width: 480px) {
+    .weather-info {
+        font-size: larger;
+    }
+
+    .weather-icon {
+        width: 50%;
+    }
+
+    /* Adjust layout, margins, paddings, etc., as needed */
 }
 
 .info-item {
@@ -62,23 +85,22 @@ body {
     justify-content: center;
     margin: 60px;
     padding: 10px;
-    background-color: rgba(50, 50, 50, 0.5); /* Semi-transparent white */
+    background-color: rgba(50, 50, 50, 0.5);
     border-radius: 10px;
     box-shadow: 0 2px 4px #333;
 }
 
 .weather-info i {
-    font-size: 55px; /* Increased font size for larger icons */
-    margin-bottom: 10px; /* Space between icon and text */
-    color: white; /* Adjust as needed */
+    font-size: 55px;
+    margin-bottom: 10px;
+    color: white;
 }
 
 #spinner {
-    position: fixed; /* Fixed position */
-    top: 50%; /* Push down by half of viewport height */
-    left: 50%; /* Push right by half of viewport width */
-    transform: translate(-50%, -50%); /* Adjust position to center */
-    /* Add more styling for your spinner below */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
     border: 5px solid #f3f3f3;
@@ -95,8 +117,7 @@ body {
 
 h1, h2, p {
     color: white;
-    /* font-family: 'Roboto', sans-serif; */
-    text-shadow: 2px 2px 4px #333; /* Drop shadow */
+    text-shadow: 2px 2px 4px #333;
 }
 
 h1 {
@@ -113,12 +134,9 @@ h2 {
 
 p {
     color: white;
-    margin: 0; /* Remove default margins */
-    font-size: 28px; /* Adjust as needed */
+    margin: 0;
+    font-size: 28px;
 }
-
-
-/* Existing CSS code... */
 
 .forecast-container {
     display: flex;
@@ -131,17 +149,16 @@ p {
     flex: 1;
     text-align: center;
     padding: 10px;
-    background-color: rgba(50, 50, 50, 0.5); /* Semi-transparent white */
+    background-color: rgba(50, 50, 50, 0.5);
     border-radius: 10px;
     margin: 5px;
 }
 
 .weather-icon {
-    width: 50px; /* Adjust as needed */
+    width: 50px;
     height: auto;
 }
 
-/* Existing CSS code... */
 
 
 
