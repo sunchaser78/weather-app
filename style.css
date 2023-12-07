@@ -5,8 +5,25 @@
 }
 
 @media screen and (max-width: 480px) {
-    /* Styles for screens smaller than 480px (mostly smartphones) */
+    .weather-info {
+        font-size: larger;
+    }
+
+    .weather-icon {
+        width: 50%;
+    }
+
+    .forecast-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .forecast-day {
+        width: 100%; 
+        margin-bottom: 10px;
+    }
 }
+
 
 
 body, #app {
@@ -65,17 +82,7 @@ body {
     margin-top: 20px; 
 }
 
-@media screen and (max-width: 480px) {
-    .weather-info {
-        font-size: larger;
-    }
 
-    .weather-icon {
-        width: 50%;
-    }
-
-    /* Adjust layout, margins, paddings, etc., as needed */
-}
 
 .info-item {
     flex: 1;
