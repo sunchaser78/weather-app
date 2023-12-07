@@ -1,4 +1,4 @@
-// Vercel serverless function to fetch city images from Unsplash
+// In /api/image.js
 module.exports = async (req, res) => {
     const cityName = req.query.city;
     const accessKey = process.env.UNSPLASH_API_KEY;
@@ -7,8 +7,10 @@ module.exports = async (req, res) => {
     try {
         const imageResponse = await fetch(url);
         const imageData = await imageResponse.json();
-        res.status(200).json(imageData.results[0].urls.regular); // or modify based on how you want to handle the data
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.status(200).json(imageData.results[0].urls.regular);
     } catch (error) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(500).json({ error: "Error fetching image" });
     }
 };

@@ -1,20 +1,6 @@
-// Replace direct API call with Vercel function endpoint
-fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(cityName)}`)
-    .then(response => response.json())
-    .then(data => {
-        // Process the data
-    })
-    .catch(error => console.error('Error:', error));
-
-    if (typeof variable !== 'undefined') {
-        // the variable is defined
-        console.info('CityName =', cityName);
-     } else {
-         // the variable is undefined
-         console.info('CityName is EMPTY');
-    }
-
 let currentCityTimezoneOffset = 0; // Global variable to store the timezone offset
+let cityName = String; // Initializes cityName container
+
 const cities = [
     'Abu Dhabi', 'Amsterdam', 'Athens', 'Bangalore', 'Bangkok', 'Barcelona',
     'Beijing', 'Beirut', 'Belfast', 'Berlin', 'Bogotá', 'Boston', 'Brussels', 'Budapest', 
@@ -35,6 +21,8 @@ const cities = [
 
 ];
 
+// Set Weather API
+const apiKey = '814a23bfe3266f502111be20eda47a3c'; 
 
 // Call setDefaultCity, populateCitySelector, Calculate local on window load
 window.onload = () => {
@@ -74,16 +62,10 @@ function sortCities() {
     cities.sort();
 }
 
-// City Selector Change Event Listener
 document.getElementById('city-selector').addEventListener('change', function() {
-    const selectedCity = this.value; // Get the selected city
-    fetchWeather(selectedCity); // Fetch weather for the selected city
-    fetchForecast(selectedCity); // Fetch forecast for the selected city
-    fetchCityImage(selectedCity); // Fetch city image for the selected city
+    const selectedCity = this.value;
+    updateCityInfo(selectedCity); // Update city information (weather and image)
 });
-
-
-
 
 // Updates City Information and handles UI transitions
 function updateCityInfo(cityName) {
@@ -121,18 +103,16 @@ function setDefaultCity() {
 }
 
 
+// Fetchs weather in selected city
 function fetchWeather(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(city)}`)
+    return fetch(`https://weather-app-five-dun.vercel.app/api/weather?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(data => {
-            updateUI(data); 
+            currentCityTimezoneOffset = data.timezone;
+            return data;
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error('Error fetching weather:', error));
 }
-
-
-
-
 
 
 
@@ -199,32 +179,40 @@ function updateLocalTime() {
 }
 
 
-function fetchCityImage(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/image?city=${encodeURIComponent(city)}`)
+
+
+
+
+
+
+
+
+// Fetch city image and handle spinner visibility
+function fetchCityImage(cityName) {
+    return fetch(`https://weather-app-five-dun.vercel.app/api/image?city=${encodeURIComponent(cityName)}`)
         .then(response => response.json())
-        .then(imageUrl => {
-            if (imageUrl) {
-                document.body.style.backgroundImage = `url('${imageUrl}')`;
-                document.body.style.backgroundPosition = 'center';
-                document.body.style.backgroundRepeat = 'no-repeat';
-                document.body.style.backgroundSize = 'cover';
-            }
-        })
+        .then(imageUrl => imageUrl)
         .catch(error => console.error('Error fetching image:', error));
 }
 
+
+
+// Existing JavaScript code...
+
 // Fetch 5-day forecast
 function fetchForecast(city) {
-    fetch(`https://weather-app-five-dun.vercel.app/api/getForecast?city=${encodeURIComponent(city)}`)
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
+    fetch(forecastUrl)
         .then(response => response.json())
         .then(data => {
-            updateForecastUI(data);
+            const forecastData = processForecastData(data);
+            updateForecastUI(forecastData);
         })
-        .catch(error => console.error('Error fetching forecast:', error));
+        .catch(error => {
+            console.error('Error fetching forecast:', error);
+            // Handle error
+        });
 }
-
-
-
 
 // Process Forecast Data
 function processForecastData(data) {
