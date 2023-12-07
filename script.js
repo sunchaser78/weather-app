@@ -28,8 +28,8 @@ const apiKey = '814a23bfe3266f502111be20eda47a3c';
 // Call setDefaultCity, populateCitySelector, Calculate local on window load
 window.onload = () => {
     populateCitySelector();
-    setDefaultCity();
-    setInterval(updateLocalTime, 1000); // Update time every second
+    setDefaultCity(); // Call setDefaultCity without String prefix
+    setInterval(updateLocalTime, 1000);
 };
 
 
@@ -100,8 +100,10 @@ function selectRandomCity() {
 // Function to set the default city on load
 function setDefaultCity() {
     const defaultCity = selectRandomCity();
-    updateCityInfo(defaultCity); // This function will handle the fetching and UI update
+    cityName = defaultCity; // Set the cityName variable
+    updateCityInfo(defaultCity); // Update city info based on the default city
 }
+
 
 
 // Fetchs weather in selected city
