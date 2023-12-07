@@ -1,5 +1,5 @@
 let currentCityTimezoneOffset = 0; // Global variable to store the timezone offset
-let cityName = String; // Initializes cityName container
+let cityName = StringsetDefaultCity(); // Initializes cityName container
 
 const cities = [
     'Abu Dhabi', 'Amsterdam', 'Athens', 'Bangalore', 'Bangkok', 'Barcelona',
