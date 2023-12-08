@@ -22,7 +22,8 @@ const cities = [
 
 ];
 
-
+// Set Weather API
+const apiKey = process.env.OPENWEATHER_API_KEY; 
 
 // Call setDefaultCity, populateCitySelector, Calculate local on window load
 window.onload = () => {
