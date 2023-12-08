@@ -22,8 +22,7 @@ const cities = [
 
 ];
 
-// Set Weather API
-const apiKey = '814a23bfe3266f502111be20eda47a3c'; 
+
 
 // Call setDefaultCity, populateCitySelector, Calculate local on window load
 window.onload = () => {
@@ -200,22 +199,17 @@ function fetchCityImage(cityName) {
 
 
 
-// Existing JavaScript code...
-
 // Fetch 5-day forecast
 function fetchForecast(city) {
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
-    fetch(forecastUrl)
+    return fetch(`https://weather-app-five-dun.vercel.app/api/forecast?city=${encodeURIComponent(city)}`)
         .then(response => response.json())
         .then(data => {
             const forecastData = processForecastData(data);
             updateForecastUI(forecastData);
         })
-        .catch(error => {
-            console.error('Error fetching forecast:', error);
-            // Handle error
-        });
+        .catch(error => console.error('Error fetching forecast:', error));
 }
+
 
 // Process Forecast Data
 function processForecastData(data) {
