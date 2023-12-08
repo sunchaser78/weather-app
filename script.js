@@ -22,8 +22,7 @@ const cities = [
 
 ];
 
-// Set Weather API
-const apiKey = process.env.OPENWEATHER_API_KEY; 
+
 
 // Call setDefaultCity, populateCitySelector, Calculate local on window load
 window.onload = () => {
@@ -204,7 +203,7 @@ function fetchCityImage(cityName) {
 
 // Fetch 5-day forecast
 function fetchForecast(city) {
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
+    const forecastUrl = `https://weather-app-five-dun.vercel.app/api/image?city=${encodeURIComponent(cityName)}&units=metric`;
     fetch(forecastUrl)
         .then(response => response.json())
         .then(data => {
