@@ -22,8 +22,7 @@ const cities = [
 
 ];
 
-// Set Weather API
-const apiKey = '814a23bfe3266f502111be20eda47a3c'; 
+
 
 // Call setDefaultCity, populateCitySelector, Calculate local on window load
 window.onload = () => {
